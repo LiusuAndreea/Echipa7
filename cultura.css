@@ -1,0 +1,166 @@
+/* ===================== GENERALE ===================== */
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    padding-top: 80px;  /* ca să nu intre conținutul sub bara de sus (fixed-top) */
+}
+
+.section-title h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* ===================== HERO (FĂRĂ FUNDAL GRI, CURAT ALB) ===================== */
+.hero-rio {
+    background-color: white;
+    padding: 120px 0;
+    text-align: center;
+    color: #333;
+}
+
+/* ===================== CARDURI CULTURĂ ===================== */
+.culture-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.culture-card {
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease;
+}
+
+.culture-card:hover {
+    transform: translateY(-4px);
+}
+
+/* ===================== TIMELINE ===================== */
+.timeline-item {
+    background: #fff8e6;
+    padding: 12px 15px;
+    border-left: 4px solid #f6c045;
+    margin-bottom: 12px;
+    border-radius: 4px;
+}
+
+/* ===================== FUN FACTS – BULINĂ GALBENĂ + TEXT ===================== */
+
+.fun-facts {
+    background-color: #fff7d1;   /* galben pal */
+    padding: 60px 0;
+}
+
+.fun-fact-row {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.fun-fact-bullet {
+    width: 90px;
+    height: 90px;
+    background-color: #ffeaa7;  /* galben pal */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    flex-shrink: 0;
+}
+
+.fun-fact-text {
+    font-size: 1.25rem;
+    color: #333;
+    max-width: 550px;
+}
+
+/* ===================== IMAGINEA PRINCIPALĂ BUCĂTĂRIE ===================== */
+.food-img-main {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* ===================== CARDURI PREPARATE ===================== */
+
+.food-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.food-card {
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+    transition: transform 0.25s ease;
+}
+
+.food-card:hover {
+    transform: scale(1.03);
+}
+
+.badge-tag {
+    font-size: 0.75rem;
+    padding: 5px 8px;
+    border-radius: 6px;
+}
+
+/* ===================== SEȚIUNEA MOOD ===================== */
+.mood-box {
+    background: #fff8e6;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* ===================== FORMULAR ===================== */
+.contact-section form {
+    background: white;
+    border-radius: 10px;
+}
+
+.contact-section button {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* ===================== CAROUSEL – ARROW FIX ===================== */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(70%) sepia(40%) saturate(400%) hue-rotate(350deg);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 60px;
+}
+
+/* ===================== NAVBAR (BARA CU PAGINILE) ===================== */
+
+.navbar {
+    box-shadow: 0 3px 10px rgba(247, 245, 245, 0.15);
+}
+
+/* brand-ul „Rio de Janeiro” */
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* linkurile din meniu */
+.navbar-nav .nav-link {
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+/* pagina activă – Cultură & Bucătărie */
+.navbar-nav .nav-link.active {
+    color: #f5b301 !important;   /* galbenul tău */
+}
