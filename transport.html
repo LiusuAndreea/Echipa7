@@ -172,6 +172,31 @@
             </div>
         </section>
     </main>
+            <!-- FORMULAR OFERTĂ ZBOR -->
+        <section class="flight-form-section">
+            <h3>✉️ Solicită o ofertă de zbor către Rio de Janeiro</h3>
+            <p>Completează formularul și vei primi o ofertă personalizată în 24h.</p>
+
+            <form action="transport.php" method="POST" class="flight-form">
+                <label>Nume complet</label>
+                <input type="text" name="name" required>
+
+                <label>Email</label>
+                <input type="email" name="email" required>
+
+                <label>Data plecării</label>
+                <input type="date" name="departure" required>
+
+                <label>Număr persoane</label>
+                <input type="number" name="persons" min="1" value="1" required>
+
+                <label>Mesaj (opțional)</label>
+                <textarea name="message" rows="4"></textarea>
+
+                <button type="submit" class="btn-submit">Trimite cererea</button>
+            </form>
+        </section>
+
     <footer class="footer">
         Rio de Janeiro
     </footer>
@@ -187,5 +212,6 @@
         });
     });
     </script>
+    <script src="transport.js"></script>
 </body>
 </html>

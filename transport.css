@@ -276,3 +276,71 @@ body {
     .header { flex-direction: column; align-items: flex-start; padding: 18px 9px 0 14px;}
     .main-nav a { margin-left: 1em; font-size: 0.96em;}
 }
+.flight-form-section {
+    background: #fff;
+    padding: 25px;
+    margin-top: 40px;
+    border-radius: 16px;
+    box-shadow: 0 2px 20px rgba(150,145,200,0.12);
+}
+
+.flight-form-section h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.3em;
+}
+
+.flight-form-section p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.flight-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.flight-form label {
+    font-weight: 600;
+    color: #444;
+}
+
+.flight-form input,
+.flight-form textarea {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: #fafafa;
+    font-size: 1em;
+}
+
+.btn-submit {
+    margin-top: 12px;
+    padding: 12px;
+    background: #FFD600;
+    color: #222;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.05em;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-submit:hover {
+    background: #e7c300;
+}
+
+.input-error {
+    border-color: #d9534f;
+    background: #fff0f0;
+}
+
+.error-message {
+    font-size: 0.85em;
+    color: #d9534f;
+    margin-top: -6px;
+    margin-bottom: 6px;
+}
+
