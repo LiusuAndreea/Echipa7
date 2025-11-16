@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport - Rio de Janeiro</title>
+    <link rel="stylesheet" href="transport.css">
+</head>
+<body>
+    <header class="header">
+        <a class="logo" href="index.html">Rio de Janeiro</a>
+        <nav class="main-nav">
+            <a class="selected orange" href="#">Transport</a>
+            <a href="atractii.html">Atracții</a>
+            <a href="cazare.html">Cazare</a>
+            <a href="cultura.html">Cultură & Bucătărie</a>
+            <a href="siguranta.html">Siguranță</a>
+        </nav>
+    </header>
+    <main class="main-content">
+        <!-- Section 1 - Info Cards -->
+        <section class="stats-cards">
+            <div class="stat-card">
+                <span class="icon">🕑</span>
+                <div class="stat-label">Durata Zborului</div>
+                <div class="stat-value">14-18 ore</div>
+                <div class="stat-details">Cu 1-2 escale</div>
+            </div>
+            <div class="stat-card">
+                <span class="icon">📍</span>
+                <div class="stat-label">Distanță</div>
+                <div class="stat-value">~10,500 km</div>
+                <div class="stat-details">București - Rio</div>
+            </div>
+            <div class="stat-card">
+                <span class="icon">💶</span>
+                <div class="stat-label">Preț Mediu</div>
+                <div class="stat-value">€600-1200</div>
+                <div class="stat-details">Dus-întors</div>
+            </div>
+            <div class="stat-card">
+                <span class="icon">📅</span>
+                <div class="stat-label">Cel Mai Bun Sezon</div>
+                <div class="stat-value">Apr-Oct</div>
+                <div class="stat-details">Perioada mai bună</div>
+            </div>
+        </section>
+
+        <!-- Section 2 - Airlines & Tips -->
+        <div class="grid-2">
+            <section class="airlines">
+                <h3>🛩️ Companii Aeriene Populare</h3>
+                <p class="airports">Zboruri din București (OTP) către Rio de Janeiro (GIG)</p>
+                <ul>
+                    <li><b>Lufthansa</b><br>Via Frankfurt sau München – Servicii excelente<br><span class="tip">Durată: 16-18h cu o escală</span></li>
+                    <li><b>Turkish Airlines</b><br>Via Istanbul – Raport calitate/preț foarte bun<br><span class="tip">Durată: 18-19h cu o escală</span></li>
+                    <li><b>TAP Air Portugal</b><br>Via Lisabona – Zboruri frecvente spre Brazilia<br><span class="tip">Durată: 15-16h cu o escală</span></li>
+                    <li><b>Air France / KLM</b><br>Via Paris sau Amsterdam – Confort și profesionalism<br><span class="tip">Durată: 16-18h cu o escală</span></li>
+                </ul>
+            </section>
+            <section class="tips">
+                <h3>🌍 Sfaturi pentru Rezervare & Călătorie</h3>
+                <div class="card orange">
+                    <b>🕓 Când să rezervi</b>
+                    <ul>
+                        <li>Rezervă cu 2-3 luni înainte pentru prețuri mai bune</li>
+                        <li>Evită perioada Carnavalului (feb-mai) – prețuri mai ridicate</li>
+                        <li>Caută oferte pe Skyscanner, Google Flights, Momondo</li>
+                    </ul>
+                </div>
+                <div class="card green">
+                    <b>✅ Documente necesare</b>
+                    <ul>
+                        <li>Pașaport valabil min. 6 luni</li>
+                        <li>NU e nevoie de viză pentru turiști (max 90 zile)</li>
+                        <li>Asigură-te că ai toate rezervările confirmate</li>
+                    </ul>
+                </div>
+                <div class="card yellow">
+                    <b>⏰ Diferența de fus orar</b>
+                    <ul>
+                        <li>Rio este cu 4-5 ore în urmă față de România (variază în funcție de ora de vară)</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <!-- Section 3 - Escale Populare -->
+        <section class="layover-comparison">
+            <h4>🧭 Comparație Rapidă - Escale Populare</h4>
+            <div class="layover-list">
+                <div class="layover-box green">
+                    <b>✈️ Via Lisabona</b>
+                    <span class="recommendation">Cel mai rapid (14-15h)</span>
+                    <span class="badge badge-green">Recomandat</span>
+                </div>
+                <div class="layover-box blue">
+                    <b>✈️ Via Istanbul</b>
+                    <span class="recommendation">Cel mai ieftin (18-19h)</span>
+                    <span class="badge badge-blue">Best value</span>
+                </div>
+                <div class="layover-box purple">
+                    <b>✈️ Via Frankfurt</b>
+                    <span class="recommendation">Cel mai confortabil (16-17h)</span>
+                    <span class="badge badge-purple">Premium</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabbed Transport Details -->
+        <section class="mobility">
+            <h4>🚋 Transport & Mobilitate</h4>
+            <p>Descoperă opțiunile de transport disponibile pentru a te deplasa cu ușurință prin Rio de Janeiro</p>
+            <div class="transport-tabs">
+                <button class="tab active">Metrou</button>
+                <button class="tab">Autobuze</button>
+                <button class="tab">Taxi & Uber</button>
+                <button class="tab">Aeroport</button>
+            </div>
+            <div class="tab-content">
+                <!-- Metrou -->
+                <div class="transport-panel active" id="tab-metrou">
+                    <h5>Metroul Rio de Janeiro</h5>
+                    <p>Cel mai rapid mod de a traversa orașul</p>
+                    <b>Linii principale:</b>
+                    <ul>
+                        <li><span style="color:#FFA800;">● Linia 1 (Portocalie)</span> - Conectează zonele centrale cu sudul orașului</li>
+                        <li><span style="color:#2ECC40;">● Linia 2 (Verde)</span> - Deservește zona de nord</li>
+                        <li><span style="color:#D82642;">● Linia 4 (Roșie)</span> - Conectează Copacabana, Ipanema și Barra da Tijuca</li>
+                    </ul>
+                    <b>Informații utile:</b>
+                    <ul>
+                        <li>Program: 05:00 - 00:00 (luni-sâmbătă), 07:00 - 23:00 (duminică)</li>
+                        <li>Bilete disponibile la automate și case de bilete</li>
+                    </ul>
+                </div>
+                <!-- Autobuze -->
+                <div class="transport-panel" id="tab-autobuz">
+                    <h5>Autobuze Publice</h5>
+                    <p>Rețea extinsă care acoperă întregul oraș.</p>
+                    <b>Tipuri de autobuze:</b>
+                    <ul>
+                        <li>Autobuze convenționale – Cele mai frecvente, opriri regulate</li>
+                        <li>BRT (Bus Rapid Transit) – Benzi dedicate, mai rapide</li>
+                        <li>Autobuze express – Opriri limitate pe rute lungi</li>
+                    </ul>
+                    <b>Cum să folosești autobuzele:</b>
+                    <ul>
+                        <li>Plata la intrare (numerar sau card RioCard)</li>
+                        <li>Aplicații recomandate: Moovit, Google Maps pentru rute și orare</li>
+                    </ul>
+                </div>
+                <!-- Taxi & Uber -->
+                <div class="transport-panel" id="tab-taxi">
+                    <h5>Taxi & Ride-sharing</h5>
+                    <p>Transport convenabil și sigur</p>
+                    <b>Opțiuni disponibile:</b>
+                    <ul>
+                        <li><b>Taxi-uri oficiale</b> – Culoare galbenă, tarif la aparat</li>
+                        <li><b>Uber</b> – Cea mai populară aplicație de ride-sharing</li>
+                        <li><b>99 Taxi</b> – Alternativă locală populară</li>
+                    </ul>
+                    <div class="card yellow safety-tip">
+                        <b>Stai de siguranță:</b> Folosește aplicații de ride-sharing sau comandă taxi de la hotel. Evită taxi-urile neoficiale de pe stradă.
+                    </div>
+                </div>
+                <!-- Aeroport -->
+                <div class="transport-panel" id="tab-aeroport">
+                    <h5>Aeroporturi principale</h5>
+                    <p>Galeão (GIG) și Santos Dumont (SDU) deservesc Rio de Janeiro</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        Rio de Janeiro
+    </footer>
+    <script>
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.transport-panel');
+    tabs.forEach((tab, idx) => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(btn => btn.classList.remove('active'));
+            panels.forEach(panel => panel.classList.remove('active'));
+            tab.classList.add('active');
+            panels[idx].classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html>

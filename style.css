@@ -1,0 +1,168 @@
+/* 🧩 Stil de bază aplicat peste tot */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Arial', sans-serif; /* ✅ font unic pentru toate elementele */
+}
+
+body {
+    color: #fff;
+}
+
+/* ====== Structura principală ====== */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    background: url('img1.jpg') no-repeat center center/cover;
+}
+
+/* 🔧 Overlay corectat */
+.overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(32, 30, 51, 0.35);
+    z-index: 1;
+    pointer-events: none; /* permite click-urilor să treacă prin el */
+}
+
+.page-title {
+    position: absolute;
+    left: 30px;
+    top: 22px;
+    font-weight: 400;
+    font-size: 1.10em;
+    letter-spacing: 0.5px;
+    z-index: 3;
+    color: #fff;
+}
+
+/* 🔧 Navbar ridicat peste overlay */
+.navigation {
+    position: absolute;
+    right: 40px;
+    top: 22px;
+    display: flex;
+    gap: 32px;
+    z-index: 5;
+    font-size: 1em;
+    opacity: 0.93;
+}
+
+.navigation a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.18s;
+    font-size: 1em;
+    letter-spacing: 0.03em;
+}
+
+.navigation a:hover {
+    color: #FFD600;
+}
+
+/* ====== Conținut principal ====== */
+
+.content {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.subtitle {
+    font-size: 1em;
+    margin-bottom: 14px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    opacity: 0.86;
+}
+
+.main-title {
+    font-size: 1.23em;
+    font-weight: 400;
+    margin-bottom: 26px;
+    max-width: 620px;
+    line-height: 1.5;
+    color: #fff;
+}
+
+.buttons {
+    display: flex;
+    gap: 13px;
+    justify-content: center;
+    margin-top: 14px;
+}
+
+/* ====== Butoane ====== */
+
+.btn-primary,
+.btn-secondary {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1em;
+    border-radius: 7px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(33,32,37,0.15);
+    transition: background 0.18s, color 0.18s;
+    padding: 11px 26px;
+    border: none;
+}
+
+.btn-primary {
+    background: #FFD600;
+    color: #1f1f1f;
+}
+
+.btn-primary:hover {
+    background: #ffea94;
+    color: #0d0d12;
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.17);
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 11px 24px;
+    box-shadow: 0 2px 7px rgba(33,32,37,0.12);
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.28);
+    color: #FFD600;
+}
+
+/* ====== Responsivitate ====== */
+
+@media (max-width: 700px) {
+    .navigation {
+        right: 20px;
+        top: 18px;
+        gap: 9px;
+        font-size: 0.93em;
+    }
+
+    .page-title {
+        left: 16px;
+        top: 18px;
+        font-size: 1em;
+    }
+
+    .main-title {
+        font-size: 0.98em;
+        max-width: 97vw;
+    }
+
+    .content {
+        min-height: 75vh;
+        margin-top: 18px;
+    }
+}
