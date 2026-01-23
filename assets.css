@@ -1,0 +1,114 @@
+body { background: #ffffff; }
+
+.page-hero {
+  padding: 48px 0 18px;
+  text-align: center;
+}
+
+/* Force: descrierile din carduri să nu fie tăiate */
+.card-attraction .muted-small{
+  display: block !important;
+  overflow: visible !important;
+  text-overflow: initial !important;
+  white-space: normal !important;
+  max-height: none !important;
+}
+
+
+.card-attraction {
+  border: 0;
+  border-radius: 18px;
+  overflow: visible; /* important: să nu mai taie conținutul */
+  box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+}
+
+.card-attraction img {
+  height: 260px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.muted-small {
+  color: #6c757d;
+  font-size: 0.92rem;
+}
+
+.info-row i {
+  width: 18px;
+  display: inline-block;
+}
+
+.section-title {
+  margin-top: 26px;
+  margin-bottom: 10px;
+}
+
+:root{
+  --contactParallax: 0px;
+  --contactOpacity: 1;
+}
+
+.contact-hero{
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  min-height: 440px;
+  background: #0b1320;
+  box-shadow: 0 12px 28px rgba(0,0,0,.10);
+}
+
+.contact-bg{
+  position: absolute;
+  inset: -620px;
+  transform: translate3d(0, var(--contactParallax), 0) scale(1.12);
+  opacity: var(--contactOpacity);
+  background-image: url("../img/hero-rio.jpg");
+  background-size: cover;
+  background-position: center;
+  will-change: transform, opacity;
+  filter: saturate(1.08) contrast(1.05);
+}
+
+.contact-overlay{
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 380px at 20% 35%, rgba(255,255,255,0.10), rgba(0,0,0,0) 60%),
+    linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.05) 100%);
+}
+
+.contact-content{
+  position: relative;
+  z-index: 2;
+  padding: 70px 0;
+}
+
+.contact-card{
+  max-width: 560px;
+  background: rgba(255,255,255,.92);
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 18px;
+  padding: 24px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 26px rgba(0,0,0,.10);
+}
+
+.contact-row{
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(15,39,68,.04);
+  border: 1px solid rgba(15,39,68,.08);
+  margin-bottom: 10px;
+}
+
+.contact-row a{
+  color: #0b63f6;
+  font-weight: 800;
+  text-decoration: none;
+}
+.contact-row a:hover{ text-decoration: underline; }
+
+@media (max-width: 992px){
+  .contact-content{ padding: 44px 0; }
+  .contact-card{ max-width: 100%; }
+}

@@ -1,0 +1,132 @@
+CREATE DATABASE IF NOT EXISTS echipa7
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_general_ci;
+
+USE echipa7;
+
+DROP TABLE IF EXISTS events;
+DROP TABLE IF EXISTS attractions;
+
+CREATE TABLE attractions (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(120) NOT NULL,
+  short_desc TEXT NOT NULL,
+  insider_tip TEXT NULL,
+  address VARCHAR(255) NOT NULL,
+  opening_hours VARCHAR(160) NOT NULL,
+  duration_hint VARCHAR(60) NULL,
+  area_hint VARCHAR(120) NULL,
+  image_path VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE events (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(140) NOT NULL,
+  event_date DATE NULL,
+  location VARCHAR(160) NOT NULL,
+  details TEXT NOT NULL,
+  image_path VARCHAR(255) NULL,
+  price_eur DECIMAL(10,2) NOT NULL DEFAULT 25.00,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO attractions
+(name, short_desc, insider_tip, address, opening_hours, duration_hint, area_hint, image_path)
+VALUES
+(
+  'Christ the Redeemer',
+  'Cu brațele deschise, statuia „Cristos Mântuitorul” veghează de pe Muntele Corcovado asupra orașului și a pădurii tropicale. Monumentul are aproximativ 30 m înălțime și o deschidere a brațelor de 28 m, fiind unul dintre cele mai recognoscibile simboluri ale Braziliei. De sus, panorama include Golful Guanabara, plajele celebre și cartierele centrale — motivul pentru care vizita aici rămâne, pentru mulți, punctul culminant al orașului.',
+  'Urcă cu trenul panoramic (aprox. 20 de minute) până pe Corcovado; e mai plăcut și ai priveliști excelente pe drum.',
+  'Parque Nacional da Tijuca - Alto da Boa Vista, Rio de Janeiro - RJ',
+  'Zilnic, 08:00–19:00',
+  '2–3 ore',
+  'Corcovado',
+  'assets/img/christ.jpg'
+),
+(
+  'Escadaria Selarón',
+  'Plină de culoare și energie, Escadaria Selarón este o scară artistică faimoasă, formată din aproximativ 215 trepte, creată de artistul Jorge Selarón. Lucrarea a fost construită în timp, din mii de plăci ceramice adunate din mai multe țări, fiecare treaptă având detalii diferite. Este una dintre cele mai fotogenice locații din Rio și un punct de trecere perfect între Lapa și Santa Teresa.',
+  'Vino dimineața devreme: e mai liber, lumina pentru poze e mai bună și prinzi atmosfera fără aglomerație.',
+  'R. Manuel Carneiro - Santa Teresa, Rio de Janeiro - RJ',
+  'Deschis 24/7',
+  '30–60 min',
+  'Santa Teresa',
+  'assets/img/selaron.jpg'
+),
+(
+  'Sugarloaf Mountain (Pão de Açúcar)',
+  'Pão de Açúcar (Sugarloaf) este una dintre cele mai spectaculoase belvederi din Rio, oferind panorame ample asupra orașului, golfului și plajelor. Urcarea cu telecabina se face în două etape (de obicei via Morro da Urca), iar priveliștea se îmbunătățește pe măsură ce urci. La apus, lumina peste ocean și relief face ca zona să fie ideală pentru fotografii.',
+  'Dacă vrei o experiență mai activă, poți urca o porțiune până la Morro da Urca pe trasee ușoare; pentru restul folosește telecabina.',
+  'Urca, Rio de Janeiro - RJ',
+  'Zilnic, 08:30–20:30',
+  '2–3 ore',
+  'Urca',
+  'assets/img/sugarloaf.jpg'
+),
+(
+  'Tijuca National Park',
+  'Parcul Național Tijuca este una dintre cele mai mari păduri urbane din lume și o evadare perfectă din agitația orașului. Aici găsești poteci umbrite, cascade, puncte de belvedere și trasee de drumeție pentru mai multe niveluri de dificultate. Este o zonă excelentă pentru natură, aer răcoros și priveliști asupra Rio-ului.',
+  'Nu rata punctul de belvedere Vista Chinesa și zonele cu cascade — sunt cele mai „wow” pentru poze și pauze.',
+  'Alto da Boa Vista, Rio de Janeiro',
+  'Zilnic, 08:00–17:00',
+  'Jumătate de zi',
+  'Alto da Boa Vista',
+  'assets/img/tijuca.jpg'
+),
+(
+  'Botanical Garden',
+  'Grădina Botanică din Rio este un spațiu liniștit, cu alei umbrite, palmieri imperiali și colecții bogate de plante tropicale. Este ideală pentru o plimbare relaxantă și pentru a descoperi flora specifică Braziliei. Atmosfera e calmă, iar zonele tematice fac vizita ușor de parcurs chiar și pentru cine nu e pasionat de botanică.',
+  'Intră și în zonele mai puțin aglomerate din spate; sunt excelente pentru poze și o plimbare fără forfotă.',
+  'Jardim Botânico, Rio de Janeiro',
+  '08:00–17:00',
+  '2–3 ore',
+  'Jardim Botânico',
+  'assets/img/botanical.jpg'
+),
+(
+  'Ipanema Beach',
+  'Ipanema este una dintre cele mai cunoscute plaje din lume, celebră pentru atmosfera vibrantă, apusurile superbe și zona de promenadă. Aici vezi localnici făcând sport, turiști relaxându-se și un vibe constant de vacanță. În funcție de sector (Posto), ai zone mai liniștite sau mai animate, iar la final de zi apusul e un moment „must see”.',
+  'Evită orele de vârf (11:00–15:00). Pentru un vibe mai plăcut, vino dimineața sau spre apus.',
+  'Rio de Janeiro',
+  'Deschis 24/7',
+  '1–3 ore',
+  'Ipanema',
+  'assets/img/ipanema.jpg'
+),
+(
+  'Copacabana Beach',
+  'Copacabana este plaja iconică a Rio-ului, mereu plină de viață: muzică, sport, promenade lungi și o energie constantă. Este un loc excelent pentru plimbări seara pe faleză și pentru a simți pulsul orașului. Pe lângă plajă, zona are restaurante, puncte de belvedere și atracții în apropiere.',
+  'Vizitează Fortul Copacabana pentru priveliști bune asupra plajei și oceanului; e și un loc bun pentru o pauză.',
+  'Rio de Janeiro',
+  'Deschis 24/7',
+  '1–3 ore',
+  'Copacabana',
+  'assets/img/copacabana.jpg'
+),
+(
+  'Museum of Tomorrow',
+  'Museum of Tomorrow este un muzeu modern, axat pe teme despre viitor: climă, tehnologie, resurse și societate. Expozițiile sunt interactive și ușor de parcurs, iar clădirea în sine, cu arhitectură futuristă, este un punct de atracție major în zona Porto Maravilha. Chiar dacă nu petreci multe ore, merită pentru experiență și fotografii.',
+  'Pentru poze reușite, mergi în jurul clădirii pe la oglinzile de apă — reflectă perfect structura.',
+  'Centro, Rio de Janeiro',
+  'Mar–Dum 10:00–18:00',
+  '1–2 ore',
+  'Centro',
+  'assets/img/museum.jpg'
+),
+(
+  'Stadionul Maracanã',
+  'Maracanã este un simbol al fotbalului brazilian și unul dintre cele mai faimoase stadioane din lume. Turul stadionului este o experiență bună pentru fani: vezi zonele importante, intrarea jucătorilor, tribunele și spațiile dedicate istoriei meciurilor legendare. Este o atracție ușor de inclus în itinerariu, mai ales dacă îți place sportul.',
+  'Rezervă tur ghidat dimineața — de obicei e mai liber și ai timp să faci poze fără grabă.',
+  'Maracanã, Rio de Janeiro',
+  '09:00–17:00',
+  '1–2 ore',
+  'Maracanã',
+  'assets/img/maracana.jpg'
+);
+
+INSERT INTO events (title, event_date, location, details, image_path, price_eur) VALUES
+('Festival de Samba', '2026-03-15', 'Sambódromo', 'Parade spectaculoase, ritmuri de samba și o atmosferă autentică braziliană. Evenimentul aduce muzică live, dans și energie de carnaval, perfect pentru turiști care vor să simtă vibe-ul Rio-ului.', 'assets/img/samba.jpg', 35.00),
+('Noapte la Muzeu', '2026-04-05', 'Praça Mauá', 'Acces extins la expoziții și activități interactive într-o atmosferă specială de seară. Ideal pentru fotografii și pentru o experiență culturală diferită.', 'assets/img/muzeu.jpg', 20.00),
+('Carnavalul din Rio', NULL, 'Sambódromo', 'Cel mai faimos carnaval din lume: școli de samba, parade grandioase, costume spectaculoase și o energie care transformă complet orașul.', 'assets/img/carnaval.jpg', 45.00),
+('Tur VIP Maracanã – Football Experience', '2026-05-10', 'Stadionul Maracanã', 'Tur ghidat premium cu acces în zone speciale și mini-expoziție despre istoria stadionului. O experiență ideală pentru fani și pentru fotografii memorabile.', 'assets/img/maracana.jpg', 28.00);
