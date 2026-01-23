@@ -1,0 +1,24 @@
+CREATE DATABASE rio_booking;
+USE rio_booking;
+
+CREATE TABLE cazari (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nume VARCHAR(100),
+  pret INT,
+  imagine VARCHAR(100)
+);
+
+CREATE TABLE rezervari (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nume VARCHAR(100),
+  email VARCHAR(100),
+  cazare VARCHAR(100),
+  persoane INT,
+  data_plecare DATE,
+  mesaj TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+INSERT INTO cazari VALUES
+(1,'Hotel Copacabana',150,'cazare1.jpg'),
+(2,'Resort Ipanema',220,'cazare2.jpg'),
+(3,'Hostel Centro',80,'cazare3.jpg');
