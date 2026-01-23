@@ -1,3 +1,4 @@
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -5,72 +6,83 @@
     font-family: 'Segoe UI', 'Arial', sans-serif;
 }
 
+/* BODY */
 body {
-    background-color: #fff;
-    color: #1f1f1f;
-    padding: 40px 20px;
+    background: #0d0d12;
+    color: #fff;
+    padding-top: 90px;
 }
 
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background-color: #fff;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    border-bottom: 1px solid #ddd;
+/* =========================
+   BOOTSTRAP NAVBAR – CUSTOM
+   ========================= */
+.navbar-hero {
+    background: transparent !important;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    transition: background 0.3s ease;
 }
 
-.header .logo {
-    font-size: 1.5em;
+.navbar-hero .navbar-brand {
+    color: #fff !important;
     font-weight: 500;
-    color: #1f1f1f;
-    text-decoration: none;
+    letter-spacing: 0.04em;
 }
 
-.header .main-nav a {
-    color: #1f1f1f;
-    text-decoration: none;
-    margin-left: 25px;
+.navbar-hero .nav-link {
+    color: #fff !important;
     font-weight: 400;
-    transition: color 0.2s;
+    margin-left: 22px;
+    transition: color 0.18s ease;
 }
 
-.header .main-nav a:hover {
-    color: #FFD600;
+.navbar-hero .nav-link:hover,
+.navbar-hero .nav-link.active {
+    color: #FFD600 !important;
 }
 
-.header .main-nav a.selected.orange {
-    color: #FFD600;
+/* MOBILE NAVBAR */
+@media (max-width: 991px) {
+    .navbar-hero {
+        background: rgba(0,0,0,0.75) !important;
+    }
+
+    .navbar-hero .nav-link {
+        margin-left: 0;
+        padding: 10px 0;
+    }
 }
 
-/* Titlu galerie */
+/* =========================
+   TITLU PAGINĂ
+   ========================= */
 h1 {
     text-align: center;
     font-weight: 400;
     font-size: 1.8em;
-    margin: 40px 0;
+    margin: 120px 0 50px;
     letter-spacing: 0.5px;
-    color: #1f1f1f;
+    
+    margin-top: 140px;
+
 }
 
-
+/* =========================
+   GALERIE
+   ========================= */
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
+    padding: 0 40px 80px;
 }
-
 
 .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: 14px;
     cursor: pointer;
-    transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .gallery-item img {
@@ -81,41 +93,37 @@ h1 {
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-
 .gallery-item:hover img {
     transform: scale(1.05);
     filter: brightness(1.1);
 }
 
 .gallery-item:hover {
-    box-shadow: 0 12px 25px rgba(255, 214, 0, 0.3);
+    box-shadow: 0 14px 30px rgba(255, 214, 0, 0.25);
 }
 
-/* Lightbox */
+/* =========================
+   LIGHTBOX
+   ========================= */
 .lightbox {
     display: none;
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.85);
+    inset: 0;
+    background: rgba(0,0,0,0.88);
     justify-content: center;
     align-items: center;
-    z-index: 100;
+    z-index: 1050;
     flex-direction: column;
-    opacity: 0;
-    transition: opacity 0.3s ease;
 }
 
 .lightbox.show {
     display: flex;
-    opacity: 1;
 }
 
 .lightbox-img {
     max-width: 90%;
     max-height: 80%;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
+    border-radius: 10px;
 }
 
 .lightbox .close,
@@ -126,12 +134,11 @@ h1 {
     color: #FFD600;
     cursor: pointer;
     user-select: none;
-    font-weight: bold;
 }
 
 .lightbox .close { top: 20px; right: 30px; }
-.lightbox .prev { left: 20px; top: 50%; transform: translateY(-50%); }
-.lightbox .next { right: 20px; top: 50%; transform: translateY(-50%); }
+.lightbox .prev { left: 30px; top: 50%; transform: translateY(-50%); }
+.lightbox .next { right: 30px; top: 50%; transform: translateY(-50%); }
 
 .lightbox .counter {
     position: absolute;
@@ -140,31 +147,23 @@ h1 {
     font-size: 1.1em;
 }
 
-
+/* =========================
+   RESPONSIVE
+   ========================= */
 @media (max-width: 700px) {
+    h1 {
+        margin-top: 100px;
+        font-size: 1.4em;
+    }
+
     .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 0 20px 60px;
         gap: 18px;
     }
 
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 15px 20px;
-    }
-
-    .header .main-nav {
-        margin-top: 10px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-
-    .header .main-nav a {
-        margin-left: 0;
-    }
-
-    .lightbox .prev, .lightbox .next {
+    .lightbox .prev,
+    .lightbox .next {
         font-size: 2em;
     }
 }
+

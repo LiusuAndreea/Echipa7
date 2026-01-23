@@ -21,7 +21,7 @@
                     <a class="nav-link" href="siguranta.html">Siguranță</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="galerie.html">Galerie</a>
+                    <a class="nav-link" href="galerie.php">Galerie</a>
                 </li>
             </ul>
         </div>
