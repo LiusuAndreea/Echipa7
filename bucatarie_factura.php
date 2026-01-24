@@ -2,102 +2,112 @@
 session_start();
 
 
-if (!isset($_SESSION['detalii_factura'])) {
-    header("Location: bucatarie.php");
+if (!isset($_SESSION['factura_finala']) && !isset($_SESSION['factura'])) {
+    
+    echo "<script>alert('Nu a fost găsită nicio factură generată recent.'); window.location.href='bucatarie.php';</script>";
     exit();
 }
 
-$f = $_SESSION['detalii_factura'];
+
+$f = isset($_SESSION['factura_finala']) ? $_SESSION['factura_finala'] : $_SESSION['factura'];
+
+
+$total_afisat = isset($f['total']) ? $f['total'] : (isset($f['suma']) ? $f['suma'] : '0');
 ?>
 
 <!DOCTYPE html>
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Factură Rio Explore</title>
+    <title>Factură Rio Explore - Confirmare Rezervare</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { font-family: "Poppins", sans-serif; background-color: #f8f9fa; }
-        .invoice-box { 
+        body { font-family: sans-serif; background-color: #f8f9fa; }
+        .invoice-card { 
             max-width: 700px; 
             margin: 50px auto; 
             background: #fff; 
             padding: 40px; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1); 
-            border-top: 8px solid #f5b301;
+            border-radius: 15px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            border-top: 10px solid #f5b301; 
         }
-        .invoice-header { border-bottom: 2px solid #eee; padding-bottom: 20px; margin-bottom: 20px; }
-        .total-amount { font-size: 1.5rem; color: #f5b301; font-weight: bold; }
+        .invoice-title { color: #f5b301; font-weight: 800; letter-spacing: 2px; }
+        .table-custom thead { background-color: #fff7d1; }
+        
         @media print {
             .no-print { display: none; }
-            .invoice-box { box-shadow: none; border: none; margin: 0; }
+            .invoice-card { box-shadow: none; border: 1px solid #eee; margin: 0; width: 100%; }
+            body { background: white; }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="invoice-box">
-        <div class="invoice-header text-center">
-            <h1 class="fw-bold" style="color: #f5b301;">RIO EXPLORE</h1>
-            <p class="text-muted">Ghidul tău culinar în inima Braziliei</p>
+    <div class="invoice-card shadow-lg">
+        <div class="text-center mb-5">
+            <h1 class="invoice-title display-5">RIO EXPLORE</h1>
+            <p class="text-muted fw-bold">CONFIRMARE REZERVARE EXPERIENȚĂ</p>
         </div>
 
         <div class="row mb-4">
             <div class="col-6">
-                <h5 class="fw-bold text-uppercase">Factură către:</h5>
-                <p>Client Rio Explore<br>
-                Destinație: Bucătăria Tradițională</p>
+                <h6 class="text-muted text-uppercase small">Facturat către:</h6>
+                <p class="fw-bold">Client Rio Explore<br>
+                <span class="text-muted fw-normal small">Experiențe Culinare Autentice</span></p>
             </div>
             <div class="col-6 text-end">
-                <h5 class="fw-bold text-uppercase">Detalii Factură:</h5>
-                <p><strong>Nr. Comandă:</strong> #<?php echo $f['nr_comanda']; ?><br>
+                <h6 class="text-muted text-uppercase small">Detalii Document:</h6>
+                <p><strong>Nr. Rezervare:</strong> #<?php echo $f['id']; ?><br>
                 <strong>Data:</strong> <?php echo $f['data']; ?></p>
             </div>
         </div>
 
-        <table class="table table-bordered mt-4">
-            <thead class="table-light">
+        <table class="table table-custom mt-4">
+            <thead>
                 <tr>
-                    <th>Descriere Serviciu / Produs</th>
-                    <th class="text-end">Total</th>
+                    <th class="py-3">Descriere Experiență</th>
+                    <th class="text-end py-3">Sumă Rezervată</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Comandă Meniu Gastronomic Rio (Sesiune)</td>
-                    <td class="text-end"><?php echo $f['total']; ?> RON</td>
+                    <td class="py-4">
+                        <span class="fw-bold">Pachet Turism Culinar Rio de Janeiro</span><br>
+                        <small class="text-muted">Include participarea la activitățile selectate din programul "Rio Gourmet".</small>
+                    </td>
+                    <td class="text-end py-4 fw-bold"><?php echo $total_afisat; ?> RON</td>
                 </tr>
             </tbody>
-            <tfoot>
+            <tfoot class="border-top">
                 <tr>
-                    <th class="text-end">Metodă Plată:</th>
-                    <th class="text-end"><?php echo $f['metoda']; ?></th>
+                    <td class="text-end py-3 text-muted">Metodă Plată:</td>
+                    <td class="text-end py-3 fw-bold"><?php echo $f['metoda']; ?></td>
                 </tr>
                 <tr>
-                    <th class="text-end text-uppercase">Total General:</th>
-                    <th class="text-end total-amount"><?php echo $f['total']; ?> RON</th>
+                    <td class="text-end py-3 fw-bold text-uppercase">Total General de Plată:</td>
+                    <td class="text-end py-3 fw-bold text-warning h4"><?php echo $total_afisat; ?> RON</td>
                 </tr>
             </tfoot>
         </table>
 
-        <div class="mt-5 text-center">
-            <p class="small text-muted italic">Vă mulțumim pentru că ați ales experiența culinară Rio de Janeiro! <br> Această factură a fost generată automat și este validă fără semnătură.</p>
+        <div class="mt-5 p-3 bg-light rounded text-center border">
+            <p class="mb-0 small text-muted">Vă mulțumim că ați ales <strong>Rio Explore</strong>! <br> 
+            Vă rugăm să prezentați acest document la punctul de întâlnire stabilit.</p>
         </div>
 
-        <div class="mt-4 no-print d-flex justify-content-between">
-            <a href="bucatarie.php" class="btn btn-outline-secondary">Înapoi la site</a>
-            <button onclick="window.print()" class="btn btn-warning fw-bold text-white">
-                <i class="fa-solid fa-print"></i> Printează Factura
+        <div class="mt-5 d-flex justify-content-between no-print">
+            <a href="bucatarie.php?status=confirmata" class="btn btn-outline-dark px-4 py-2 fw-bold">
+                Înapoi la site
+            </a>
+            <button onclick="window.print()" class="btn btn-warning px-4 py-2 fw-bold shadow-sm">
+                Printează Factura
             </button>
         </div>
     </div>
 </div>
 
-<?php 
-
-?>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
