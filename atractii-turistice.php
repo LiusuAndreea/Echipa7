@@ -3,7 +3,14 @@
 if (session_status() !== PHP_SESSION_ACTIVE) {
   session_start();
 }
-require __DIR__ . "/config/db.php";
+
+
+try {
+    $pdo = new PDO("mysql:host=localhost;dbname=echipa7;charset=utf8", "root", "");
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Baza de date echipa7 nu a fost gasita! Verifica phpMyAdmin. Eroare: " . $e->getMessage());
+}
 
 $attractions = $pdo->query("SELECT * FROM attractions ORDER BY id ASC")->fetchAll();
 
@@ -55,7 +62,7 @@ $events = $pdo->query("
     <?php foreach ($attractions as $a): ?>
       <div class="col-12 col-md-6 col-lg-4">
         <div class="card card-attraction h-100">
-          <img src="<?= htmlspecialchars($a['image_path']) ?>" alt="<?= htmlspecialchars($a['name']) ?>">
+          <img src="img/<?= basename($a['image_path']) ?>" alt="<?= htmlspecialchars($a['name']) ?>">
           <div class="card-body">
             <h3 class="h6 fw-semibold mb-2"><?= htmlspecialchars($a['name']) ?></h3>
 
@@ -100,10 +107,18 @@ $events = $pdo->query("
         <div class="card border-0 shadow-sm rounded-4 h-100">
 
           <?php if (!empty($e['image_path'])): ?>
-            <img
-              src="<?= htmlspecialchars($e['image_path']) ?>"
-              alt="<?= htmlspecialchars($e['title']) ?>"
-              class="w-100"
+            <?php 
+              
+              if (trim($e['title']) === 'Carnavalul din Rio') {
+                  $imagine_finala = "img/imgcarnaval1.jpg"; 
+              } else {
+                  $imagine_finala = "img/" . basename($e['image_path']);
+              }
+            ?>
+            <img 
+              src="<?= $imagine_finala ?>" 
+              alt="<?= htmlspecialchars($e['title']) ?>" 
+              class="w-100" 
               style="height:190px;object-fit:cover;border-top-left-radius:1rem;border-top-right-radius:1rem;">
           <?php endif; ?>
 
@@ -142,30 +157,31 @@ $events = $pdo->query("
       </div>
     <?php endforeach; ?>
   </div>
-    <!-- VIDEO: Carnaval – atmosferă din Rio -->
+   
   <div class="mt-5">
-    <h3 class="h6 fw-semibold mb-3">Carnaval – atmosferă din Rio</h3>
+      <h3 class="h6 fw-semibold mb-3">Carnaval – atmosferă din Rio</h3>
 
-    <div class="rounded-4 overflow-hidden shadow-sm">
-      <video
-        class="w-100"
-        controls
-        muted
-        loop
-        playsinline
-        style="max-height:420px; object-fit:cover;">
-        <source src="assets/img/carnival.mp4" type="video/mp4">
-        Browserul tău nu suportă video HTML5.
-      </video>
+      <div class="rounded-4 overflow-hidden shadow-sm">
+        <video
+          class="w-100"
+          id="carnivalVideo"
+          controls
+          muted
+          loop
+          playsinline
+          style="max-height:420px; object-fit:cover;">
+          <source src="img/carnival.mp4" type="video/mp4">
+          Browserul tău nu suportă video HTML5.
+        </video>
+      </div>
+
+      <p class="muted-small mt-2">
+        Video – Carnavalul din Rio de Janeiro
+      </p>
     </div>
 
-    <p class="muted-small mt-2">
-      Video – Carnavalul din Rio de Janeiro
-    </p>
-  </div>
 
-
-  <!-- FAQ + NEWSLETTER-->
+ 
   <section class="newsletter-wrap mt-5">
 
     <section class="faq-wrap mt-5 mb-4">
