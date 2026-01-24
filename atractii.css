@@ -1,0 +1,275 @@
+/* =====================
+   RESET & GLOBAL
+===================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #1f2937;
+}
+
+/* =====================
+   HERO – GLIDE SMOOTH
+===================== */
+:root {
+  --heroParallax: 0px;
+  --heroOpacity: 1;
+}
+
+.hero-banner {
+  position: relative;
+  overflow: hidden;
+  min-height: 460px;
+  padding: 110px 0 130px;
+  background: #0b1320;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: -700px;
+  background-image: url("../img/hero-rio.jpg");
+  background-size: cover;
+  background-position: center;
+  transform: translate3d(0, var(--heroParallax), 0) scale(1.15);
+  opacity: var(--heroOpacity);
+  will-change: transform, opacity;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.65) 0%, rgba(0,0,0,.25) 55%, rgba(255,255,255,0) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  text-align: center;
+}
+
+.hero-title {
+  font-weight: 800;
+  font-size: clamp(32px, 4vw, 56px);
+}
+
+.hero-subtitle {
+  max-width: 760px;
+  margin: 10px auto 0;
+  opacity: .95;
+}
+
+/* =====================
+   CARDURI ATRACȚII
+===================== */
+.card-attraction {
+  border: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 26px rgba(0,0,0,0.08);
+  background: #fff;
+}
+
+.card-attraction img {
+  height: 260px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-attraction .card-body {
+  padding: 18px;
+}
+
+.muted-small {
+  color: #6b7280;
+  font-size: .92rem;
+  line-height: 1.55;
+}
+
+.info-row i {
+  width: 18px;
+  display: inline-block;
+}
+
+/* =====================
+   NEWSLETTER
+===================== */
+.newsletter-card {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #8ec3ff;
+  box-shadow: 0 14px 30px rgba(0,0,0,.12);
+}
+
+.newsletter-media {
+  background-image: url("../img/newsletter.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 260px;
+}
+
+.newsletter-content {
+  padding: 36px;
+  color: #0f2744;
+}
+
+.newsletter-content h2 {
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+/* =====================
+   CONTACT – FULL WIDTH
+===================== */
+.contact-hero {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background-image: url("../img/hero-rio.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 120px 20px;
+}
+
+.contact-overlay {
+  background: rgba(10, 20, 30, 0.65);
+  padding: 40px;
+  max-width: 620px;
+  margin: auto;
+  border-radius: 18px;
+  color: #fff;
+}
+
+.contact-overlay h2 {
+  font-weight: 800;
+}
+
+.contact-box {
+  background: rgba(255,255,255,0.12);
+  padding: 14px 18px;
+  border-radius: 12px;
+  margin-top: 12px;
+}
+
+/* =====================
+   FAQ
+===================== */
+.faq-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.08);
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 992px) {
+  .newsletter-card {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===== Airlines: look nicer even without grid markup ===== */
+.airlines-grid,
+.airlines-col{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.airline-link{
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #f6f8fb;
+  border: 1px solid rgba(0,0,0,0.08);
+  color: #0b63f6;
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.airline-link:hover{
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.10);
+}
+  .site-footer{
+  background: #0b1320;
+  color: rgba(255,255,255,.92);
+  margin-top: 48px;
+}
+
+.footer-logo{
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-size: 22px;
+}
+
+.footer-title{
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.footer-muted{
+  color: rgba(255,255,255,.72);
+}
+
+.footer-links{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.footer-links a{
+  color: rgba(255,255,255,.86);
+  text-decoration: none;
+}
+
+.footer-links a:hover{ text-decoration: underline; }
+
+.footer-contact{
+  display: grid;
+  gap: 10px;
+  color: rgba(255,255,255,.86);
+}
+.footer-contact i{ width: 18px; display: inline-block; opacity: .9; }
+
+.footer-contact a{
+  color: rgba(255,255,255,.92);
+  text-decoration: none;
+}
+.footer-contact a:hover{ text-decoration: underline; }
+
+.footer-pill{
+  width: 42px; height: 42px;
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  color: #fff;
+  text-decoration: none;
+}
+.footer-pill:hover{ background: rgba(255,255,255,.14); }
+
+.footer-sep{
+  border-color: rgba(255,255,255,.12);
+  margin: 28px 0 18px;
+}
+
+.footer-bottom{
+  color: rgba(255,255,255,.75);
+}

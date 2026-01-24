@@ -1,3 +1,4 @@
+<?php include "includes/navbar.php"; ?>
 <?php
 if (session_status() !== PHP_SESSION_ACTIVE) {
   session_start();
@@ -20,12 +21,11 @@ $events = $pdo->query("
   <title>Atracții și evenimente turistice | Rio de Janeiro</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=<?= time() ?>">
+  <link rel="stylesheet" href="assets/css/atractii.css?v=<?= time() ?>">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
 
-<?php include __DIR__ . "/partials/navbar.php"; ?>
 
 <header class="hero-banner">
   <div class="hero-bg" aria-hidden="true"></div>
@@ -142,7 +142,28 @@ $events = $pdo->query("
       </div>
     <?php endforeach; ?>
   </div>
-  
+    <!-- VIDEO: Carnaval – atmosferă din Rio -->
+  <div class="mt-5">
+    <h3 class="h6 fw-semibold mb-3">Carnaval – atmosferă din Rio</h3>
+
+    <div class="rounded-4 overflow-hidden shadow-sm">
+      <video
+        class="w-100"
+        controls
+        muted
+        loop
+        playsinline
+        style="max-height:420px; object-fit:cover;">
+        <source src="assets/img/carnival.mp4" type="video/mp4">
+        Browserul tău nu suportă video HTML5.
+      </video>
+    </div>
+
+    <p class="muted-small mt-2">
+      Video – Carnavalul din Rio de Janeiro
+    </p>
+  </div>
+
 
   <!-- FAQ + NEWSLETTER-->
   <section class="newsletter-wrap mt-5">
@@ -294,36 +315,71 @@ $events = $pdo->query("
   </section>
 
 </main>
+<footer class="site-footer mt-5">
+  <div class="container py-5">
+    <div class="row g-4 align-items-start">
+      <div class="col-12 col-lg-5">
+        <div class="footer-brand">
+          <div class="footer-logo">Rio de Janeiro</div>
+          <p class="footer-muted mb-3">
+            Idei de călătorie, atracții și evenimente — într-un singur loc.
+          </p>
+
+          <div class="footer-social d-flex gap-2">
+            <a class="footer-pill" href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a class="footer-pill" href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a class="footer-pill" href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-3">
+        <h6 class="footer-title">Linkuri rapide</h6>
+        <ul class="footer-links">
+          <li><a href="atractii-turistice.php">Atracții</a></li>
+          <li><a href="atractii-turistice.php#evenimente">Evenimente</a></li>
+          <li><a href="cart.php">Coș</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-lg-4">
+        <h6 class="footer-title">Contact</h6>
+        <div class="footer-contact">
+          <div><i class="bi bi-telephone"></i> 031 631 1770</div>
+          <div><i class="bi bi-envelope"></i> <a href="mailto:riodejaneiro@gmail.com">riodejaneiro@gmail.com</a></div>
+          <div><i class="bi bi-clock"></i> Luni – Sâmbătă 09:00 – 17:00</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="footer-sep">
+
+    <div class="d-flex flex-column flex-md-row justify-content-between gap-2 footer-bottom">
+      <div>© <?= date('Y') ?> Echipa7 • Toate drepturile rezervate.</div>
+    </div>
+  </div>
+</footer>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 (() => {
   const root = document.documentElement;
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduceMotion) return;
-
   let current = 0;
   let target = 0;
 
-  function animate(){
+  function animate() {
     current += (target - current) * 0.08;
     root.style.setProperty('--heroParallax', (-current) + 'px');
-    const opacity = Math.max(1 - (current / 520), 0.55);
-    root.style.setProperty('--heroOpacity', opacity);
+    root.style.setProperty('--heroOpacity', Math.max(1 - current / 520, 0.6));
     requestAnimationFrame(animate);
   }
 
-  function onScroll(){
-    const y = window.scrollY || 0;
-    target = Math.min(y * 0.65, 420);
-  }
+  window.addEventListener('scroll', () => {
+    target = Math.min(window.scrollY * 0.65, 420);
+  });
 
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
-  requestAnimationFrame(animate);
+  animate();
 })();
 </script>
-
-</body>
-</html>
