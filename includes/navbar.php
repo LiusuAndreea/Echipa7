@@ -15,13 +15,10 @@
                     <a class="nav-link" href="transport.php">Transport & Cazare</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="atractii-turistice.php">Atracții</a>
+                    <a class="nav-link" href="atractii-turistice-index.php">Atracții</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="bucatarie.html">Cultură & Bucătărie</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="siguranta.html">Siguranță</a>
+                    <a class="nav-link" href="bucatarie.php">Cultură & Bucătărie</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="galerie.php">Galerie</a>
