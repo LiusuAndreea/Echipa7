@@ -51,11 +51,11 @@ if (!isset($_SESSION['cart']) || count($_SESSION['cart']) == 0) {
                     
                     $id_produs = mysqli_real_escape_string($conexiune, $id_produs);
                     
-                   
-                    $sql = "SELECT nume, pret FROM produse WHERE id = $id_produs";
+                    // MODIFICARE AICI: Am adăugat prefixul proiect_bucatarie.
+                    $sql = "SELECT nume, pret FROM proiect_bucatarie.produse WHERE id = $id_produs";
                     $rezultat = mysqli_query($conexiune, $sql);
                     
-                    if ($row = mysqli_fetch_assoc($rezultat)) {
+                    if ($rezultat && $row = mysqli_fetch_assoc($rezultat)) {
                         echo "<tr>
                                 <td class='fw-bold text-dark'>{$row['nume']}</td>
                                 <td class='text-end fw-bold'>{$row['pret']} RON</td>

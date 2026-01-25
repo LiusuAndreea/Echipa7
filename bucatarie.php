@@ -20,13 +20,13 @@ if (isset($_GET['status'])) {
 
 if (isset($_POST['voteaza'])) {
     $nume_p = mysqli_real_escape_string($conexiune, $_POST['preparat']);
-    mysqli_query($conexiune, "UPDATE sondaj_rio SET voturi = voturi + 1 WHERE preparat = '$nume_p'");
+    mysqli_query($conexiune, "UPDATE proiect_bucatarie.sondaj_rio SET voturi = voturi + 1 WHERE preparat = '$nume_p'");
     header("Location: bucatarie.php#sondaj"); 
     exit();
 }
 
 
-$query_sondaj = mysqli_query($conexiune, "SELECT * FROM sondaj_rio");
+$query_sondaj = mysqli_query($conexiune, "SELECT * FROM proiect_bucatarie.sondaj_rio");
 $labels = []; $valori = [];
 while($v = mysqli_fetch_assoc($query_sondaj)) {
     $labels[] = $v['preparat'];
@@ -147,7 +147,7 @@ while($v = mysqli_fetch_assoc($query_sondaj)) {
     <h2 class="section-title">Experiențe Culinare</h2>
     <div class="row">
         <?php
-        $q = mysqli_query($conexiune, "SELECT * FROM produse");
+        $q = mysqli_query($conexiune, "SELECT * FROM proiect_bucatarie.produse");
         while($exp = mysqli_fetch_assoc($q)):
         ?>
         <div class="col-md-4 mb-4">
@@ -183,24 +183,60 @@ while($v = mysqli_fetch_assoc($query_sondaj)) {
     </div>
 </div>
 
+<h2 class="section-title">Întrebări Frecvente</h2>
+<div class="accordion mb-5" id="accordionFAQ">
+  <div class="accordion-item">
+    <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Este necesară rezervarea în avans?</button></h2>
+    <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ"><div class="accordion-body">Da, recomandăm rezervarea cu cel puțin 48 de ore înainte pentru tururile gastronomice.</div></div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Există opțiuni vegetariene?</button></h2>
+    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ"><div class="accordion-body">Desigur! Majoritatea experiențelor noastre pot fi adaptate pentru diete vegetariene.</div></div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Cât durează un tur gastronomic?</button></h2>
+    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ"><div class="accordion-body">În medie, un tur durează între 3 și 4 ore, incluzând degustările.</div></div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">Ce include prețul atelierului de Caipirinha?</button></h2>
+    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ"><div class="accordion-body">Prețul include ingredientele, ustensilele și degustarea a 4 tipuri de Cachaça.</div></div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">Copiii pot participa la tururi?</button></h2>
+    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ"><div class="accordion-body">Da, copiii sub 12 ani beneficiază de reducere 50% la tururile de deserturi.</div></div>
+  </div>
+</div>
+
 <footer class="footer-nav">
-    <div class="container text-center text-md-start">
-        <div class="row">
+    <div class="container">
+        <div class="row text-center text-md-start">
+            <div class="col-md-4 mb-4">
+                <h5 class="fw-bold mb-3 text-warning">Contact</h5>
+                <p class="text-white small mb-1">📍 Adresa: Copacabana, Rio de Janeiro</p>
+                <p class="text-white small mb-1">📞 Telefon: +55 21 9999-9999</p>
+                <p class="text-white small">✉️ Email: contact@rioexplore.ro</p>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                 <h5 class="fw-bold mb-3 text-warning">Administrare</h5>
+                 <ul class="list-unstyled">
+                    <li><a href="bucatarie_checkout.php" class="text-white text-decoration-none">🛒 Vezi Coș</a></li>
+                    <li><a href="bucatarie_factura.php" class="text-white text-decoration-none">📄 Vezi Factură</a></li>
+                 </ul>
+            </div>
             <div class="col-md-4">
-                <h5 class="fw-bold mb-3 text-warning">Administrare</h5>
-                <ul class="list-unstyled">
-                    <li><a href="bucatarie_checkout.php" class="text-white text-decoration-none">🛒 Vezi Coș & Rezervă</a></li>
-                    <li><a href="bucatarie_factura.php" class="text-white text-decoration-none">📄 Vezi ultima factură (Descarcă/Printează)</a></li>
-                </ul>
+                 <h5 class="fw-bold mb-3 text-warning">Noutăți</h5>
+                 <form action="bucatarie_newsletter.php" method="POST" class="d-flex gap-2">
+                    <input type="email" name="email_abonat" class="form-control form-control-sm" placeholder="Email" required>
+                    <button type="submit" name="submit_news" class="btn btn-warning btn-sm fw-bold">OK</button>
+                 </form>
             </div>
-            <div class="col-md-8">
-                <h5 class="fw-bold mb-3 text-warning">Abonează-te la Noutăți</h5>
-                <form action="bucatarie_newsletter.php" method="POST" class="row g-2">
-                    <div class="col-md-5"><input type="text" name="nume_abonat" class="form-control" placeholder="Numele tău" required></div>
-                    <div class="col-md-5"><input type="email" name="email_abonat" class="form-control" placeholder="Email-ul tău" required></div>
-                    <div class="col-md-2"><button type="submit" name="submit_news" class="btn btn-warning fw-bold w-100">OK</button></div>
-                </form>
-            </div>
+        </div>
+        
+        <hr class="bg-light mt-4">
+        
+        <div class="text-center py-2">
+            <p class="mb-0 text-white-50 small">© 2026 Echipa7 • Toate drepturile rezervate.</p>
         </div>
     </div>
 </footer>

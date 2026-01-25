@@ -10,7 +10,7 @@ if (isset($_POST['submit_news'])) {
     $email = mysqli_real_escape_string($conexiune, $_POST['email_abonat']);
 
     
-    $sql = "INSERT INTO newsletter (nume, email) VALUES ('$nume', '$email')";
+    $sql = "INSERT INTO proiect_bucatarie.newsletter (nume, email) VALUES ('$nume', '$email')";
 
     
     if (mysqli_query($conexiune, $sql)) {

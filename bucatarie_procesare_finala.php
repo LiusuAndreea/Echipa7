@@ -19,7 +19,8 @@ if (isset($_POST['finalizeaza_comanda']) && !empty($_SESSION['cart'])) {
     $metoda = mysqli_real_escape_string($conexiune, $metoda);
     $total = mysqli_real_escape_string($conexiune, $total);
 
-    $sql = "INSERT INTO comenzi (metoda_plata, total_plata, data_comanda) 
+    // MODIFICARE AICI: Am adăugat prefixul proiect_bucatarie. în fața tabelului comenzi
+    $sql = "INSERT INTO proiect_bucatarie.comenzi (metoda_plata, total_plata, data_comanda) 
             VALUES ('$metoda', '$total', '$data_rezervare')";
     
     $executie = mysqli_query($conexiune, $sql);
