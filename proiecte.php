@@ -12,8 +12,10 @@ if (isset($_POST['trimite_grant'])) {
     $titlu_proiect = $conn->real_escape_string($_POST['titlu_proiect']);
     $buget = $conn->real_escape_string($_POST['buget_estimat']);
     $categorie = $conn->real_escape_string($_POST['categorie']);
-    $detalii_echipa = $conn->real_escape_string($_POST['detalii_echipa']);
-    $impact = $conn->real_escape_string($_POST['impact']);
+    
+    // REZOLVARE EROARE: Verificăm dacă există cheile în $_POST înainte de a le folosi
+    $detalii_echipa = isset($_POST['detalii_echipa']) ? $conn->real_escape_string($_POST['detalii_echipa']) : "Nespecificat";
+    $impact = isset($_POST['impact']) ? $conn->real_escape_string($_POST['impact']) : "Nespecificat";
     $propunere = $conn->real_escape_string($_POST['propunere']);
     
     $descriere_completa = "Categorie: $categorie | Buget: $buget | Echipa: $detalii_echipa | Impact: $impact | Propunere: $propunere";
@@ -44,7 +46,6 @@ while($row = $date->fetch_assoc()) { $proiecte[] = $row; }
         .contact-card { background: #ffffff; border-top: 10px solid #0d6efd; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
         .section-title { color: #0d6efd; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 25px; display: block; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; }
         .form-label { font-weight: 600; margin-bottom: 8px; color: #34495e; }
-        .form-control:focus { border-color: #0d6efd; box-shadow: 0 0 0 0.25 row rgba(13, 110, 253, 0.1); }
         .main-header { margin-bottom: 50px; }
     </style>
 </head>
@@ -57,10 +58,10 @@ while($row = $date->fetch_assoc()) { $proiecte[] = $row; }
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto text-uppercase small">
                 <li class="nav-item"><a class="nav-link" href="../index.php">Acasă</a></li>
                 <li class="nav-item"><a class="nav-link" href="../transport.php">Transport</a></li>
-                <li class="nav-item"><a class="nav-link" href="../istoric.php">Istoric & Cultură</a></li>
+                <li class="nav-item"><a class="nav-link" href="../istoric.php">Istoric</a></li>
                 <li class="nav-item"><a class="nav-link active fw-bold text-primary" href="proiecte.php">Granturi</a></li>
                 <li class="nav-item"><a class="nav-link" href="../contact.php">Contact</a></li>
             </ul>
@@ -69,13 +70,7 @@ while($row = $date->fetch_assoc()) { $proiecte[] = $row; }
 </nav>
 
 <div class="container py-5">
-    
     <div id="rioCarousel" class="carousel slide rounded-4 overflow-hidden mb-5 shadow-lg" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <?php foreach($proiecte as $index => $p): ?>
-                <button type="button" data-bs-target="#rioCarousel" data-bs-slide-to="<?= $index ?>" class="<?= $index === 0 ? 'active' : '' ?>"></button>
-            <?php endforeach; ?>
-        </div>
         <div class="carousel-inner">
             <?php foreach($proiecte as $index => $p): ?>
             <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>" data-bs-interval="4000">
@@ -88,12 +83,6 @@ while($row = $date->fetch_assoc()) { $proiecte[] = $row; }
             </div>
             <?php endforeach; ?>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#rioCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#rioCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
     </div>
 
     <div class="row justify-content-center">
@@ -101,14 +90,14 @@ while($row = $date->fetch_assoc()) { $proiecte[] = $row; }
             <div class="contact-card p-4 p-md-5">
                 <div class="main-header text-center">
                     <h2 class="display-6 fw-bold text-dark">Propune Proiectul Tău</h2>
-                    <p class="text-muted">Completează detaliile de mai jos pentru a solicita finanțare nerambursabilă.</p>
+                    <p class="text-muted">Completează detaliile de mai jos pentru evaluare.</p>
                 </div>
 
                 <?php if($notificare): ?>
-                    <div class="alert alert-success border-0 shadow-sm py-3 mb-4"><?= $notificare ?></div>
+                    <div class="alert alert-success border-0 shadow-sm py-3 mb-4 text-center"><?= $notificare ?></div>
                 <?php endif; ?>
 
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST">
                     
                     <span class="section-title">I. Definire Proiect</span>
                     <div class="mb-4">
@@ -118,8 +107,18 @@ while($row = $date->fetch_assoc()) { $proiecte[] = $row; }
 
                     <div class="mb-4">
                         <label class="form-label">Descrierea Detaliată a Proiectului</label>
-                        <textarea name="propunere" class="form-control" rows="8" placeholder="Explicați în detaliu scopul, activitățile și rezultatele așteptate ale proiectului..."></textarea>
-                        <div class="form-text">Minimum 200 de cuvinte recomandat pentru o evaluare corectă.</div>
+                        <textarea name="propunere" class="form-control" rows="6" placeholder="Explicați scopul proiectului..." required></textarea>
+                    </div>
+
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label">Impact Social / Economic</label>
+                            <textarea name="impact" class="form-control" rows="3" placeholder="Cine beneficiază de acest proiect?"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Echipa de Implementare</label>
+                            <textarea name="detalii_echipa" class="form-control" rows="3" placeholder="Scurtă prezentare a echipei..."></textarea>
+                        </div>
                     </div>
 
                     <div class="row g-4 mb-5">
@@ -138,7 +137,7 @@ while($row = $date->fetch_assoc()) { $proiecte[] = $row; }
                         </div>
                     </div>
 
-                    <span class="section-title">II. Date de Contact & Aplicant</span>
+                    <span class="section-title">II. Date de Contact</span>
                     <div class="row g-4 mb-4">
                         <div class="col-md-6">
                             <label class="form-label">Nume Complet Aplicant</label>
