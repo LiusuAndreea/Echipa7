@@ -7,6 +7,10 @@
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
+-- ACESTE LINII ASIGURĂ CREAREA AUTOMATĂ A BAZEI DE DATE
+CREATE DATABASE IF NOT EXISTS `proiect_bucatarie`;
+USE `proiect_bucatarie`;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -16,10 +20,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `proiect_bucatarie`
---
 
 -- --------------------------------------------------------
 
