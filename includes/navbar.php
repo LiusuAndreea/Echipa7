@@ -15,7 +15,7 @@
                     <a class="nav-link" href="transport.php">Transport & Cazare</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="atractii-turistice-index.php">Atracții</a>
+                    <a class="nav-link" href="atractii-turistice.php">Atracții</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="bucatarie.php">Cultură & Bucătărie</a>
